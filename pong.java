@@ -14,17 +14,13 @@ public class Pong extends Frame {
     int ballW = 50;
     int ballVx = 6;
     int ballVy = 6; 
-    int ballAx = 6;
     int Paddle1X = 1;
     int Paddle1Y = 1;
     int PaddleW = 75;
     int Paddle2X = 1;
     int Paddle2Y = 1;
     int Paddle2W = 75;
-    
-    int p1Y = 0;
-    int p1X = 0;
-    int p1Vy = 0;
+
     
     //scoring variables
     int scoreP1 = 0;
@@ -49,26 +45,17 @@ public class Pong extends Frame {
         ballY = ballY + ballVy;
         g.fillOval(ballX, ballY, ballW, ballW);
         
-        if(ballX > 740) {
+        if(ballX >= 740 ) {
             ballVx = -ballVx;
         }
-        if(ballX < 0) {
+        if(ballX <= 0) {
             ballVx = -ballVx;
         }
-        if(ballY > 500) {
+        if(ballY >= 500) {
             ballVy = -ballVy;
         }
-        if(ballY < 0) {
+        if(ballY <= 0) {
             ballVy = -ballVy;
-        }
-        
-        if (ballX == p1X) {
-            ballVx = -ballVx;
-            ballVy = -ballVy;
-        if (ballX == p1Y) {
-            ballVx = -ballVx;
-            ballVy = -ballVy;
-            }
         }
         
         //Drawing the paddles
@@ -78,13 +65,11 @@ public class Pong extends Frame {
         //Drawing the right paddle
         g.fillRect(760, Paddle2Y, 25, 100);
         //Pong Collision Right
-        if(ballX >= 740 && (ballY >= p1Y) && ballY <= Paddle1Y + 100) {
-            ballVx = - ballVx;
-        }
         
         if((ballY >= Paddle1Y + 55 || ballY <= Paddle1Y - 55) && ballX <= 0) {
-            scoreP2 ++;
-        }else if((ballY >= Paddle2Y + 55 || ballY <= Paddle2Y - 55) && ballX >= 740) {
+			scoreP2 ++;
+        }else if((ballY >= Paddle2Y + 55 || ballY <= Paddle2Y - 55) && ballX >= 740) 
+		{		
             scoreP1 ++;
         }
         
@@ -107,8 +92,12 @@ public class Pong extends Frame {
         //draw the score on the screen
         Font plainFont = new Font("Serif", Font.PLAIN, 36);
         g.setFont(plainFont);
-        g.drawString(scoreP1 + "", 200, 100);
-        g.drawString(scoreP2 + "", 550, 100);
+        g.drawString("P1:"+scoreP1 + "", 200, 100);
+        g.drawString("P2:"+scoreP2 + "", 550, 100);
+
+		g.drawString("ballX:"+ballX + "", 200, 200);
+        g.drawString("ballY:"+ballY + "", 550, 200);
+
     }
     
     
