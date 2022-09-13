@@ -1,3 +1,6 @@
+//currently everything works except for the point system for player 1
+//will increment by 1 whenever paddle 1 is below half of the y-axis and by 3 when it is above it
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
